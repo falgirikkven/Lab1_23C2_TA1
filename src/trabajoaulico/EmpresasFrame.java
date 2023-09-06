@@ -1,6 +1,7 @@
 package trabajoaulico;
 
 import java.util.ArrayList;
+import java.util.TreeSet;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
@@ -10,7 +11,7 @@ import javax.swing.JOptionPane;
  */
 public class EmpresasFrame extends javax.swing.JFrame {
 
-    private final ArrayList<Empresa> listaEmpresas;
+    private final TreeSet<Empresa> listaEmpresas;
     private final ArrayList<Empleado> listaEmpleados;
 
     /**
@@ -18,7 +19,7 @@ public class EmpresasFrame extends javax.swing.JFrame {
      */
     public EmpresasFrame() {
         initComponents();
-        listaEmpresas = new ArrayList();
+        listaEmpresas = new TreeSet();
         listaEmpleados = new ArrayList();
         /* Data para trabajar */
         agregarDatosIniciales();
@@ -30,39 +31,39 @@ public class EmpresasFrame extends javax.swing.JFrame {
         empresa = new Empresa("Pepito SA", 10000000);
         listaEmpresas.add(empresa);
         cbEmpresas.addItem(empresa.toString());
-        empleado = new Empleado(10000000, "Pepe Pepez", Categoria.DIRECTOR.capitalizar(), 1000, empresa);
+        empleado = new Empleado(10000, "Pepe Pepez", Categoria.DIRECTOR.capitalizar(), 1000, empresa);
         empresa.agregarEmpleado(empleado);
         listaEmpleados.add(empleado);
-        empleado = new Empleado(10000001, "Juan Pepez", Categoria.GERENTE.capitalizar(), 700, empresa);
+        empleado = new Empleado(10001, "Juan Pepez", Categoria.GERENTE.capitalizar(), 700, empresa);
         empresa.agregarEmpleado(empleado);
         listaEmpleados.add(empleado);
-        empleado = new Empleado(10000002, "Carlos Pepez", Categoria.GERENTE.capitalizar(), 700, empresa);
+        empleado = new Empleado(10002, "Carlos Pepez", Categoria.GERENTE.capitalizar(), 700, empresa);
         empresa.agregarEmpleado(empleado);
         listaEmpleados.add(empleado);
-        empleado = new Empleado(10001000, "Otroncio Perez", Categoria.MIEMBRO.capitalizar(), 100, empresa);
+        empleado = new Empleado(11000, "Otroncio Perez", Categoria.MIEMBRO.capitalizar(), 100, empresa);
         empresa.agregarEmpleado(empleado);
         listaEmpleados.add(empleado);
 
         empresa = new Empresa("Laurencio SRL", 20000000);
         listaEmpresas.add(empresa);
         cbEmpresas.addItem(empresa.toString());
-        empleado = new Empleado(20000000, "Laurencio Lautarez", Categoria.DIRECTOR.capitalizar(), 1000, empresa);
+        empleado = new Empleado(20000, "Laurencio Lautarez", Categoria.DIRECTOR.capitalizar(), 1000, empresa);
         empresa.agregarEmpleado(empleado);
         listaEmpleados.add(empleado);
-        empleado = new Empleado(20000001, "Lautaro Lorentz", Categoria.GERENTE.capitalizar(), 900, empresa);
+        empleado = new Empleado(20001, "Lautaro Lorentz", Categoria.GERENTE.capitalizar(), 900, empresa);
         empresa.agregarEmpleado(empleado);
         listaEmpleados.add(empleado);
-        empleado = new Empleado(20000002, "Laura Laurancia", Categoria.GERENTE.capitalizar(), 720, empresa);
+        empleado = new Empleado(20002, "Laura Laurancia", Categoria.GERENTE.capitalizar(), 720, empresa);
         empresa.agregarEmpleado(empleado);
         listaEmpleados.add(empleado);
-        empleado = new Empleado(20020000, "Lau Lau", Categoria.MIEMBRO.capitalizar(), 10, empresa);
+        empleado = new Empleado(22000, "Lau Lau", Categoria.MIEMBRO.capitalizar(), 10, empresa);
         empresa.agregarEmpleado(empleado);
         listaEmpleados.add(empleado);
 
-        empresa = new Empresa("Pedro Sociedad Colectiva", 30000000);
+        empresa = new Empresa("Pedro Sociedad Colectiva", 30000);
         listaEmpresas.add(empresa);
         cbEmpresas.addItem(empresa.toString());
-        empleado = new Empleado(30000000, "Pedro Rodriguez", Categoria.DIRECTOR.capitalizar(), 0, empresa);
+        empleado = new Empleado(30000, "Pedro Rodriguez", Categoria.DIRECTOR.capitalizar(), 0, empresa);
         empresa.agregarEmpleado(empleado);
         listaEmpleados.add(empleado);
 
@@ -107,8 +108,8 @@ public class EmpresasFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(600, 400));
-        setPreferredSize(new java.awt.Dimension(600, 400));
-        setSize(new java.awt.Dimension(600, 400));
+        setResizable(false);
+        setSize(getPreferredSize());
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Empleado", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
 
@@ -177,8 +178,8 @@ public class EmpresasFrame extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(105, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lDocumento)
                     .addComponent(tfDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -206,7 +207,7 @@ public class EmpresasFrame extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bGuardarEmpleado)
                     .addComponent(bMostrarEmpleados))
-                .addContainerGap())
+                .addContainerGap(105, Short.MAX_VALUE))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Empresa", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
@@ -233,16 +234,17 @@ public class EmpresasFrame extends javax.swing.JFrame {
                     .addComponent(lCuit))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bCrearEmpresa)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(tfRazonSocial)
-                        .addComponent(tfCUIT, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)))
-                .addContainerGap(49, Short.MAX_VALUE))
+                    .addComponent(tfCUIT)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(bCrearEmpresa)
+                        .addGap(0, 85, Short.MAX_VALUE))
+                    .addComponent(tfRazonSocial))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lRazonSocial)
                     .addComponent(tfRazonSocial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -252,7 +254,7 @@ public class EmpresasFrame extends javax.swing.JFrame {
                     .addComponent(tfCUIT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(bCrearEmpresa)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jmEmpleado.setText("Empleado");
@@ -307,12 +309,10 @@ public class EmpresasFrame extends javax.swing.JFrame {
         }
 
         Empresa e = new Empresa(razonSocial, cuit);
-        if (listaEmpresas.contains(e)) {
+        if (!(listaEmpresas.add(e))) {
             JOptionPane.showMessageDialog(this, "Esta Empresa ya existe", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-
-        listaEmpresas.add(e);
         cbEmpresas.addItem(e.toString());
         bGuardarEmpleado.setEnabled(true);
         bMostrarEmpleados.setEnabled(true);
@@ -360,8 +360,11 @@ public class EmpresasFrame extends javax.swing.JFrame {
             return;
         }
         Empleado nuevoEmpleado = new Empleado(documento, (nombre + " " + apellido), categoria, sueldo, empresa);
-        empresa.agregarEmpleado(nuevoEmpleado);
-        listaEmpleados.add(nuevoEmpleado);
+        if (empresa.agregarEmpleado(nuevoEmpleado)) {
+            listaEmpleados.add(nuevoEmpleado);
+        } else {
+            JOptionPane.showMessageDialog(this, "Ya hay un empleado con este documento en la empresa", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_bGuardarEmpleadoActionPerformed
 
     private void bMostrarEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bMostrarEmpleadosActionPerformed

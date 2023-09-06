@@ -18,6 +18,8 @@ public class VerEmpleados extends javax.swing.JDialog {
 
     /**
      * Creates new form VerEmpleados
+     * @param parent
+     * @param modal
      */
     public VerEmpleados(java.awt.Frame parent, boolean modal, ArrayList<Empleado> listaEmpleados) {
         super(parent, modal);

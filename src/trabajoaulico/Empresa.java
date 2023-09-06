@@ -1,26 +1,26 @@
 package trabajoaulico;
 
-import java.util.ArrayList;
 import java.util.Objects;
+import java.util.TreeSet;
 
 /**
  *
  * @author Leonel
  */
-class Empresa {
+class Empresa implements Comparable<Empresa> {
 
     private String razonSocial;
     private int cuit;
-    private ArrayList<Empleado> empleados;
+    private TreeSet<Empleado> empleados;
 
     public Empresa(String razonSocial, int cuit) {
         this.razonSocial = razonSocial;
         this.cuit = cuit;
-        empleados = new ArrayList();
+        empleados = new TreeSet();
     }
 
-    public void agregarEmpleado(Empleado e) {
-        empleados.add(e);
+    public boolean agregarEmpleado(Empleado e) {
+        return empleados.add(e);
     }
 
     public void mostrarEmpleados() {
@@ -42,7 +42,7 @@ class Empresa {
         return cuit;
     }
 
-    public ArrayList<Empleado> getEmpleados() {
+    public TreeSet<Empleado> getEmpleados() {
         return empleados;
     }
 
@@ -52,20 +52,8 @@ class Empresa {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Empresa other = (Empresa) obj;
-        return Objects.equals(this.razonSocial, other.razonSocial);
+    public int compareTo(Empresa o) {
+        return this.razonSocial.compareTo(o.getRazonSocial());
     }
-
-       
 
 }

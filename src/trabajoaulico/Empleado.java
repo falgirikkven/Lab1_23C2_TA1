@@ -4,7 +4,7 @@ package trabajoaulico;
  *
  * @author Leonel
  */
-public class Empleado {
+public class Empleado implements Comparable<Empleado> {
 
     private int dni;
     private String nombreApellido;
@@ -51,6 +51,11 @@ public class Empleado {
     @Override
     public String toString() {
         return "Empleado{" + "dni=" + dni + ", nombreApellido=" + nombreApellido + ", categoria=" + categoria + ", sueldo=" + sueldo + ", empresa=" + empresa + '}';
+    }
+
+    @Override
+    public int compareTo(Empleado o) {
+        return Integer.compare(this.dni, o.getDni());
     }
 
 }
